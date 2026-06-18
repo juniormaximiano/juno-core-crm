@@ -68,13 +68,24 @@ public class ClientService {
 
     public ClientResponseDTO findClientById(Long id) {
 
-        var searchedClient = clientRepository.findById(id);
+        Client searchedClient = clientRepository.findById(id).orElseThrow( ( ) -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
 
-        if (searchedClient.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found");
-        }
+        return convertToDTO(searchedClient);
+    }
 
-        return convertToDTO(searchedClient.get());
+    public ClientResponseDTO updateClient(Long id, ClientRequestDTO request) {
+
+        Client searchedClient = clientRepository.findById(id).orElseThrow( ( ) -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
+
+        searchedClient.setClientName(request.clientName());
+        searchedClient.setCompanyName(request.companyName());
+        searchedClient.setEmail(request.email());
+        searchedClient.setPhone(request.phone());
+
+        var ClientUpdated = clientRepository.save(searchedClient);
+
+        return convertToDTO(ClientUpdated);
+
     }
 
 }

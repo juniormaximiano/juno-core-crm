@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/clients")
 public class ClientController {
 
     ClientService clientService;
-    ClientRepository clientRepository;
 
     public ClientController(ClientService clientService, ClientRepository clientRepository) {
         this.clientService = clientService;
@@ -21,10 +20,8 @@ public class ClientController {
 
 
     @PostMapping("/create")
-    public ClientResponseDTO createClient(ClientRequestDTO clientRequestDTO) {
-        var createdClient = clientService.createClient(clientRequestDTO);
-        return createdClient;
-
+    public ClientResponseDTO createClient(@RequestBody ClientRequestDTO clientRequestDTO) {
+        return clientService.createClient(clientRequestDTO);
     }
 
     @GetMapping("/listAll")
@@ -34,9 +31,19 @@ public class ClientController {
     }
 
     @GetMapping("/findById")
-    public ClientResponseDTO getClientById(@RequestParam Long id) {
+    public ClientResponseDTO getClientById(
+            @RequestParam Long id
+    ) {
         var searchedClient = clientService.findClientById(id);
         return searchedClient;
+    }
+
+    @PutMapping("/{id}")
+    public ClientResponseDTO updateClient(
+            @PathVariable Long id,
+            @RequestBody ClientRequestDTO clientRequestDTO
+    ) {
+        return clientService.updateClient(id, clientRequestDTO);
     }
 
 
