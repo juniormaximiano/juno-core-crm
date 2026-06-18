@@ -4,10 +4,7 @@ import com.juno.corecrm.dto.ClientRequestDTO;
 import com.juno.corecrm.dto.ClientResponseDTO;
 import com.juno.corecrm.repository.ClientRepository;
 import com.juno.corecrm.service.ClientService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,9 +27,17 @@ public class ClientController {
 
     }
 
-    @GetMapping("listAll")
+    @GetMapping("/listAll")
     public List<ClientResponseDTO> getAllClients() {
         var searchedClients = clientService.getAllClients();
         return searchedClients;
     }
+
+    @GetMapping("/findById")
+    public ClientResponseDTO getClientById(@RequestParam Long id) {
+        var searchedClient = clientService.findClientById(id);
+        return searchedClient;
+    }
+
+
 }
