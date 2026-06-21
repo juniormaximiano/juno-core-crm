@@ -124,4 +124,20 @@ public class ClientService {
         return clientResponseDTOS;
     }
 
+    public List<ClientResponseDTO> findActiveClients() {
+
+        var searchedClients = clientRepository.findAllByActiveTrue();
+
+        List<ClientResponseDTO> clientResponseDTOS = new ArrayList<>();
+
+        for (var client : searchedClients) {
+            clientResponseDTOS.add(convertToDTO(client));
+        }
+
+        return clientResponseDTOS;
+
+    }
+
+
+
 }

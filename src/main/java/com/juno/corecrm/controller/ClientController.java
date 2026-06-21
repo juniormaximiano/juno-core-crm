@@ -64,4 +64,9 @@ public class ClientController {
     }
 
 
+    @GetMapping("/findAllActiveClients")
+    public List<ClientResponseDTO> findAllActiveClients() {
+        return  clientService.findActiveClients();
+    }
+
 }
