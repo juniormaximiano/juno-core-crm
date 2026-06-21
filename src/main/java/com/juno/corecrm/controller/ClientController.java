@@ -58,5 +58,10 @@ public class ClientController {
         return clientService.findClientByName(name);
     }
 
+    @GetMapping("/findByCompanyName")
+    public List<ClientResponseDTO> findByCompanyName(@RequestParam String CompanyName) {
+        return clientService.findClientByCompanyName(CompanyName);
+    }
+
 
 }

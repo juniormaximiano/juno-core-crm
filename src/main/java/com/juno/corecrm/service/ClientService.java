@@ -68,14 +68,14 @@ public class ClientService {
 
     public ClientResponseDTO findClientById(Long id) {
 
-        Client searchedClient = clientRepository.findById(id).orElseThrow( ( ) -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
+        Client searchedClient = clientRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
 
         return convertToDTO(searchedClient);
     }
 
     public ClientResponseDTO updateClient(Long id, ClientRequestDTO request) {
 
-        Client searchedClient = clientRepository.findById(id).orElseThrow( ( ) -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
+        Client searchedClient = clientRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
 
         searchedClient.setClientName(request.clientName());
         searchedClient.setCompanyName(request.companyName());
@@ -89,12 +89,11 @@ public class ClientService {
     }
 
     public ClientResponseDTO deactivateClient(Long id) {
-        Client updatedClient  = clientRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
-        updatedClient .setActive(false);
-        var ClientUpdated = clientRepository.save(updatedClient );
+        Client updatedClient = clientRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
+        updatedClient.setActive(false);
+        var ClientUpdated = clientRepository.save(updatedClient);
         return convertToDTO(ClientUpdated);
     }
-
 
     public List<ClientResponseDTO> findClientByName(String name) {
 
@@ -109,6 +108,20 @@ public class ClientService {
 
         return clientResponseDTOS;
 
+    }
+
+    public List<ClientResponseDTO> findClientByCompanyName(String companyName) {
+
+        var searchedClient = clientRepository.findByCompanyNameIsContainingIgnoreCase(companyName);
+
+        List<ClientResponseDTO> clientResponseDTOS = new ArrayList<>();
+
+        for (var client : searchedClient) {
+
+            clientResponseDTOS.add(convertToDTO(client));
+        }
+
+        return clientResponseDTOS;
     }
 
 }
