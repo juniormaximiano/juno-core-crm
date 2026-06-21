@@ -88,4 +88,11 @@ public class ClientService {
 
     }
 
+    public ClientResponseDTO deactivateClient(Long id) {
+        Client updatedClient  = clientRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
+        updatedClient .setActive(false);
+        var ClientUpdated = clientRepository.save(updatedClient );
+        return convertToDTO(ClientUpdated);
+    }
+
 }

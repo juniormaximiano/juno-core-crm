@@ -46,5 +46,12 @@ public class ClientController {
         return clientService.updateClient(id, clientRequestDTO);
     }
 
+    @PatchMapping("/deactivate")
+    public ClientResponseDTO deactivateClient(
+            @RequestParam Long id
+    ) {
+        return clientService.deactivateClient(id);
+    }
+
 
 }
