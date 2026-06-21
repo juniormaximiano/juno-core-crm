@@ -53,5 +53,10 @@ public class ClientController {
         return clientService.deactivateClient(id);
     }
 
+    @GetMapping("/getAllByName")
+    public List<ClientResponseDTO> getAllClientsByName(@RequestParam String name) {
+        return clientService.findClientByName(name);
+    }
+
 
 }

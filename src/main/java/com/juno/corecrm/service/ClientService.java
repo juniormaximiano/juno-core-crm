@@ -95,4 +95,20 @@ public class ClientService {
         return convertToDTO(ClientUpdated);
     }
 
+
+    public List<ClientResponseDTO> findClientByName(String name) {
+
+        var searchedClient = clientRepository.findByClientNameIsContainingIgnoreCase(name);
+
+        List<ClientResponseDTO> clientResponseDTOS = new ArrayList<>();
+
+        for (var client : searchedClient) {
+
+            clientResponseDTOS.add(convertToDTO(client));
+        }
+
+        return clientResponseDTOS;
+
+    }
+
 }
