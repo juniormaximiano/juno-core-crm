@@ -1,8 +1,8 @@
 package com.juno.corecrm.service;
 
 import com.juno.corecrm.domain.entity.Client;
-import com.juno.corecrm.dto.ClientRequestDTO;
-import com.juno.corecrm.dto.ClientResponseDTO;
+import com.juno.corecrm.DTO.Client.ClientRequestDTO;
+import com.juno.corecrm.DTO.Client.ClientResponseDTO;
 import com.juno.corecrm.repository.ClientRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.juno.corecrm.dto;
+package com.juno.corecrm.DTO.Client;
 
 import java.time.LocalDate;
 

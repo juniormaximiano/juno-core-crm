@@ -1,11 +1,9 @@
 package com.juno.corecrm.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Client {
@@ -26,7 +24,18 @@ public class Client {
 
     private LocalDate createdAt;
 
+    @OneToMany(mappedBy = "client")
+    private List<Contact> contacts;
+
     public Client() {
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
     }
 
     public Long getIdClient() {
