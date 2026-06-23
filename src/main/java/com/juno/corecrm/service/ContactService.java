@@ -48,4 +48,10 @@ public class ContactService {
                 contact.getClient().getIdClient()
         );
     }
+
+    public ContactResponseDTO findContactById(Long id) {
+      Contact contactSearched =  contactRepository.findById(id).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found;"));
+      return  convertToDTO(contactSearched);
+
+    }
 }

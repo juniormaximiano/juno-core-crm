@@ -18,8 +18,13 @@ public class ContactController {
         this.contactService = contactService;
     }
 
-        @PostMapping("/{id}/contacts")
+    @PostMapping("/{id}/contacts")
     public ContactResponseDTO createContact(@PathVariable Long id, @RequestBody ContactRequestDTO contactRequestDTO) {
-        return  contactService.createContact(id, contactRequestDTO);
+        return contactService.createContact(id, contactRequestDTO);
+    }
+
+    @GetMapping("/{id}/contacts")
+    public ContactResponseDTO findContactById(@PathVariable Long id) {
+        return  contactService.findContactById(id);
     }
 }
