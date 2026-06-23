@@ -7,8 +7,10 @@ import com.juno.corecrm.domain.entity.Contact;
 import com.juno.corecrm.repository.ClientRepository;
 import com.juno.corecrm.repository.ContactRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+@Service
 public class ContactService {
 
     ClientRepository clientRepository;
@@ -34,7 +36,6 @@ public class ContactService {
         return convertToDTO(savedContact);
 
     }
-
 
     public ContactResponseDTO convertToDTO(Contact contact) {
         return  new ContactResponseDTO(
