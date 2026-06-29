@@ -25,6 +25,11 @@ public class ContactController {
 
     @GetMapping("/{id}/contacts")
     public ContactResponseDTO findContactById(@PathVariable Long id) {
-        return  contactService.findContactById(id);
+        return contactService.findContactById(id);
+    }
+
+    @PutMapping("/{id}/contacts")
+    public ContactResponseDTO updateContact(@PathVariable Long id, @RequestBody ContactRequestDTO contactRequestDTO) {
+        return contactService.updateContact(id, contactRequestDTO);
     }
 }
