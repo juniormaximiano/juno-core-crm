@@ -76,4 +76,17 @@ public class ContactService {
         return convertToDTO(updatedContact);
 
     }
+
+    public ContactResponseDTO deactiveContact(Long id) {
+
+        Contact contactSearched = contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found"));
+
+        contactSearched.setActive(false);
+
+        return convertToDTO(contactSearched);
+
+
+    }
+
+
 }

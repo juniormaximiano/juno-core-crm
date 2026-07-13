@@ -32,4 +32,9 @@ public class ContactController {
     public ContactResponseDTO updateContact(@PathVariable Long id, @RequestBody ContactRequestDTO contactRequestDTO) {
         return contactService.updateContact(id, contactRequestDTO);
     }
+
+    @PatchMapping("/{id}/contacts")
+    public ContactResponseDTO deactiveClient(@PathVariable Long id) {
+        return contactService.deactiveContact(id);
+    }
 }
