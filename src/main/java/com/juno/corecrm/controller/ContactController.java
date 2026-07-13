@@ -6,6 +6,8 @@ import com.juno.corecrm.service.ClientService;
 import com.juno.corecrm.service.ContactService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/clients")
 public class ContactController {
@@ -37,4 +39,10 @@ public class ContactController {
     public ContactResponseDTO deactiveClient(@PathVariable Long id) {
         return contactService.deactiveContact(id);
     }
+
+    @GetMapping()
+        public List<ContactResponseDTO> findAll(){
+            return contactService.listAllContacts();
+        }
+
 }

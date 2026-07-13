@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ContactService {
 
@@ -83,10 +86,29 @@ public class ContactService {
 
         contactSearched.setActive(false);
 
-        return convertToDTO(contactSearched);
+        Contact updatedContact = contactRepository.save(contactSearched);
+
+
+        return convertToDTO(updatedContact);
 
 
     }
+
+    public List<ContactResponseDTO> listAllContacts(){
+
+        var allContacts = contactRepository.findAll();
+
+        List<ContactResponseDTO> contactResponseDTOS = new ArrayList<>();
+
+        for (var contacts : allContacts){
+
+            contactResponseDTOS.add(convertToDTO(contacts));
+
+        }
+
+        return contactResponseDTOS;
+    }
+
 
 
 }
