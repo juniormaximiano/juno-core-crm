@@ -2,9 +2,9 @@ package com.juno.corecrm.service;
 
 import com.juno.corecrm.DTO.Contact.ContactRequestDTO;
 import com.juno.corecrm.DTO.Contact.ContactResponseDTO;
-import com.juno.corecrm.domain.entity.Client;
+import com.juno.corecrm.domain.entity.Company;
 import com.juno.corecrm.domain.entity.Contact;
-import com.juno.corecrm.repository.ClientRepository;
+import com.juno.corecrm.repository.CompanyRepository;
 import com.juno.corecrm.repository.ContactRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,17 +17,17 @@ import java.util.List;
 
 public class ContactService {
 
-    ClientRepository clientRepository;
+    CompanyRepository companyRepository;
 
     ContactRepository contactRepository;
 
-    public ContactService(ClientRepository clientRepository, ContactRepository contactRepository) {
-        this.clientRepository = clientRepository;
+    public ContactService(CompanyRepository companyRepository, ContactRepository contactRepository) {
+        this.companyRepository = companyRepository;
         this.contactRepository = contactRepository;
     }
 
     public ContactResponseDTO createContact(Long id, ContactRequestDTO request) {
-        Client searchedClient = clientRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found;"));
+        Company searchedCompany = companyRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found;"));
 
         Contact contact = new Contact();
         contact.setName(request.name());
@@ -35,7 +35,7 @@ public class ContactService {
         contact.setPhone(request.phone());
         contact.setRole(request.role());
         contact.setActive(true);
-        contact.setClient(searchedClient);
+        contact.setClient(searchedCompany);
         Contact savedContact = contactRepository.save(contact);
 
         return convertToDTO(savedContact);

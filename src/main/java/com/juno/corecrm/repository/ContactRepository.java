@@ -1,6 +1,5 @@
 package com.juno.corecrm.repository;
 
-import com.juno.corecrm.DTO.Contact.ContactResponseDTO;
 import com.juno.corecrm.domain.entity.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -2,7 +2,7 @@ package com.juno.corecrm.DTO.Client;
 
 import java.time.LocalDate;
 
-public record ClientResponseDTO(
+public record CompanyResponseDTO(
 
         long idClient,
 

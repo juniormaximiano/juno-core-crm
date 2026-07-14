@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-public class Client {
+public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +24,10 @@ public class Client {
 
     private LocalDate createdAt;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "company")
     private List<Contact> contacts;
 
-    public Client() {
+    public Company() {
     }
 
     public List<Contact> getContacts() {

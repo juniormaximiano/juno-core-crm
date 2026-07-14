@@ -1,6 +1,6 @@
 package com.juno.corecrm.DTO.Client;
 
-public record ClientRequestDTO(
+public record CompanyRequestDTO(
 
         String clientName,
 

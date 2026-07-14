@@ -14,8 +14,8 @@ public class Contact {
     private String phone;
     private boolean active;
     @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+    @JoinColumn(name = "company_id")
+    private Company company;
 
     public Contact() {
     }
@@ -68,11 +68,11 @@ public class Contact {
         this.active = active;
     }
 
-    public Client getClient() {
-        return client;
+    public Company getClient() {
+        return company;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(Company company) {
+        this.company = company;
     }
 }
