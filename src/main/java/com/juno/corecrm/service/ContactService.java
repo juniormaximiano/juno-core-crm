@@ -14,9 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+
 public class ContactService {
 
     ClientRepository clientRepository;
+
     ContactRepository contactRepository;
 
     public ContactService(ClientRepository clientRepository, ContactRepository contactRepository) {
@@ -25,7 +27,7 @@ public class ContactService {
     }
 
     public ContactResponseDTO createContact(Long id, ContactRequestDTO request) {
-       Client searchedClient = clientRepository.findById(id).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found;"));
+        Client searchedClient = clientRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found;"));
 
         Contact contact = new Contact();
         contact.setName(request.name());
@@ -41,7 +43,7 @@ public class ContactService {
     }
 
     public ContactResponseDTO convertToDTO(Contact contact) {
-        return  new ContactResponseDTO(
+        return new ContactResponseDTO(
                 contact.getId(),
                 contact.getName(),
                 contact.getRole(),
@@ -53,14 +55,14 @@ public class ContactService {
     }
 
     public ContactResponseDTO findContactById(Long id) {
-      Contact contactSearched =  contactRepository.findById(id).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found;"));
-      return  convertToDTO(contactSearched);
+        Contact contactSearched = contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found;"));
+        return convertToDTO(contactSearched);
 
     }
 
     public ContactResponseDTO updateContact(Long id, ContactRequestDTO request) {
 
-        Contact contact = contactRepository.findById(id).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found;"));
+        Contact contact = contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found;"));
 
         contact.setId(id);
 
@@ -94,13 +96,13 @@ public class ContactService {
 
     }
 
-    public List<ContactResponseDTO> listAllContacts(){
+    public List<ContactResponseDTO> listAllContacts() {
 
         var allContacts = contactRepository.findAll();
 
         List<ContactResponseDTO> contactResponseDTOS = new ArrayList<>();
 
-        for (var contacts : allContacts){
+        for (var contacts : allContacts) {
 
             contactResponseDTOS.add(convertToDTO(contacts));
 
@@ -109,6 +111,13 @@ public class ContactService {
         return contactResponseDTOS;
     }
 
+    public ContactResponseDTO findById(Long id) {
+
+        Contact contactSearched = contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found"));
+
+        return convertToDTO(contactSearched);
+
+    }
 
 
 }

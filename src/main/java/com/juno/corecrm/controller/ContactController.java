@@ -41,8 +41,13 @@ public class ContactController {
     }
 
     @GetMapping()
-        public List<ContactResponseDTO> findAll(){
-            return contactService.listAllContacts();
-        }
+    public List<ContactResponseDTO> findAll() {
+        return contactService.listAllContacts();
+    }
+
+    @GetMapping("findby/{id}/contacts")
+    public ContactResponseDTO findById(@PathVariable Long id){
+        return contactService.findById(id);
+    }
 
 }
