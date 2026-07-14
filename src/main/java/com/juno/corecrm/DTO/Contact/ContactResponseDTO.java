@@ -7,6 +7,6 @@ public record ContactResponseDTO(
         String email,
         String phone,
         boolean active,
-        Long idClient
+        Long idCompany
 ) {
 }

@@ -1,8 +1,8 @@
 package com.juno.corecrm.service;
 
 import com.juno.corecrm.domain.entity.Company;
-import com.juno.corecrm.DTO.Client.CompanyRequestDTO;
-import com.juno.corecrm.DTO.Client.CompanyResponseDTO;
+import com.juno.corecrm.DTO.Company.CompanyRequestDTO;
+import com.juno.corecrm.DTO.Company.CompanyResponseDTO;
 import com.juno.corecrm.repository.CompanyRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class CompanyService {
 
     public CompanyResponseDTO convertToDTO(Company company) {
         return new CompanyResponseDTO(
-                company.getIdClient(),
+                company.getIdCompany(),
                 company.getClientName(),
                 company.getCompanyName(),
                 company.getEmail(),
@@ -114,10 +114,10 @@ public class CompanyService {
         return convertToDTO(updatedCompany);
     }
 
-    public List<CompanyResponseDTO> findCompanyByContactName(String name) {
+    public List<CompanyResponseDTO> findCompanyByClientName(String name) {
 
         List<Company> searchedCompanies =
-                companyRepository.findByContactNameContainingIgnoreCase(name);
+                companyRepository.findByClientNameContainingIgnoreCase(name);
 
         List<CompanyResponseDTO> companyResponseDTOS = new ArrayList<>();
 

@@ -17,12 +17,12 @@ public class ContactController {
         this.contactService = contactService;
     }
 
-    @PostMapping("/client/{clientId}")
+    @PostMapping("/company/{companyId}")
     public ContactResponseDTO createContact(
-            @PathVariable Long clientId,
+            @PathVariable Long companyId,
             @RequestBody ContactRequestDTO request
     ) {
-        return contactService.createContact(clientId, request);
+        return contactService.createContact(companyId, request);
     }
 
     @GetMapping
@@ -37,11 +37,11 @@ public class ContactController {
         return contactService.findById(contactId);
     }
 
-    @GetMapping("/client/{clientId}")
-    public ContactResponseDTO findContactsByClient(
-            @PathVariable Long clientId
+    @GetMapping("/company/{companyId}")
+    public ContactResponseDTO findContactsBycompany(
+            @PathVariable Long companyId
     ) {
-        return contactService.findContactById(clientId);
+        return contactService.findContactById(companyId);
     }
 
     @PutMapping("/{contactId}")

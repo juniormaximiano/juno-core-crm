@@ -1,8 +1,7 @@
 package com.juno.corecrm.controller;
 
-import com.juno.corecrm.DTO.Client.CompanyRequestDTO;
-import com.juno.corecrm.DTO.Client.CompanyResponseDTO;
-import com.juno.corecrm.repository.CompanyRepository;
+import com.juno.corecrm.DTO.Company.CompanyRequestDTO;
+import com.juno.corecrm.DTO.Company.CompanyResponseDTO;
 import com.juno.corecrm.service.CompanyService;
 import org.springframework.web.bind.annotation.*;
 

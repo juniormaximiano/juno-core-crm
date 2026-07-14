@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface CompanyRepository extends JpaRepository<Company, Long> {
 
-    List<Company> findByContactNameContainingIgnoreCase(String name);
+    List<Company> findByClientNameContainingIgnoreCase(String name);
 
-    List<Company> findByCompanyNameContainingIgnoreCase(String companyName);
+    List<Company> findByCompanyNameContainingIgnoreCase(String name);
 
     List<Company> findAllByActiveTrue();
 

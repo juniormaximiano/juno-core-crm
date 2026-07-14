@@ -50,7 +50,7 @@ public class ContactService {
                 contact.getEmail(),
                 contact.getPhone(),
                 contact.isActive(),
-                contact.getClient().getIdClient()
+                contact.getClient().getIdCompany()
         );
     }
 
