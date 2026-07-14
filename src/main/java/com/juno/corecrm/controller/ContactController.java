@@ -2,52 +2,60 @@ package com.juno.corecrm.controller;
 
 import com.juno.corecrm.DTO.Contact.ContactRequestDTO;
 import com.juno.corecrm.DTO.Contact.ContactResponseDTO;
-import com.juno.corecrm.service.ClientService;
 import com.juno.corecrm.service.ContactService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/contacts")
 public class ContactController {
 
-    public final ClientService clientService;
-    public final ContactService contactService;
+    private final ContactService contactService;
 
-    public ContactController(ClientService clientService, ContactService contactService) {
-        this.clientService = clientService;
+    public ContactController(ContactService contactService) {
         this.contactService = contactService;
     }
 
-    @PostMapping("/{id}/contacts")
-    public ContactResponseDTO createContact(@PathVariable Long id, @RequestBody ContactRequestDTO contactRequestDTO) {
-        return contactService.createContact(id, contactRequestDTO);
+    @PostMapping("/client/{clientId}")
+    public ContactResponseDTO createContact(
+            @PathVariable Long clientId,
+            @RequestBody ContactRequestDTO request
+    ) {
+        return contactService.createContact(clientId, request);
     }
 
-    @GetMapping("/{id}/contacts")
-    public ContactResponseDTO findContactById(@PathVariable Long id) {
-        return contactService.findContactById(id);
-    }
-
-    @PutMapping("/{id}/contacts")
-    public ContactResponseDTO updateContact(@PathVariable Long id, @RequestBody ContactRequestDTO contactRequestDTO) {
-        return contactService.updateContact(id, contactRequestDTO);
-    }
-
-    @PatchMapping("/{id}/contacts")
-    public ContactResponseDTO deactiveClient(@PathVariable Long id) {
-        return contactService.deactiveContact(id);
-    }
-
-    @GetMapping()
-    public List<ContactResponseDTO> findAll() {
+    @GetMapping
+    public List<ContactResponseDTO> findAllContacts() {
         return contactService.listAllContacts();
     }
 
-    @GetMapping("findby/{id}/contacts")
-    public ContactResponseDTO findById(@PathVariable Long id){
-        return contactService.findById(id);
+    @GetMapping("/{contactId}")
+    public ContactResponseDTO findContactById(
+            @PathVariable Long contactId
+    ) {
+        return contactService.findById(contactId);
     }
 
+    @GetMapping("/client/{clientId}")
+    public ContactResponseDTO findContactsByClient(
+            @PathVariable Long clientId
+    ) {
+        return contactService.findContactById(clientId);
+    }
+
+    @PutMapping("/{contactId}")
+    public ContactResponseDTO updateContact(
+            @PathVariable Long contactId,
+            @RequestBody ContactRequestDTO request
+    ) {
+        return contactService.updateContact(contactId, request);
+    }
+
+    @PatchMapping("/{contactId}/deactivate")
+    public ContactResponseDTO deactivateContact(
+            @PathVariable Long contactId
+    ) {
+        return contactService.deactiveContact(contactId);
+    }
 }

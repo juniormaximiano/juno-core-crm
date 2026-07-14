@@ -55,9 +55,15 @@ public class ContactService {
     }
 
     public ContactResponseDTO findContactById(Long id) {
-        Contact contactSearched = contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found;"));
-        return convertToDTO(contactSearched);
+        Contact contactSearched = contactRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResponseStatusException(
+                                HttpStatus.NOT_FOUND,
+                                "Contact not found"
+                        )
+                );
 
+        return convertToDTO(contactSearched);
     }
 
     public ContactResponseDTO updateContact(Long id, ContactRequestDTO request) {
