@@ -3,6 +3,7 @@ package com.juno.corecrm.controller;
 import com.juno.corecrm.DTO.Company.CompanyRequestDTO;
 import com.juno.corecrm.DTO.Company.CompanyResponseDTO;
 import com.juno.corecrm.service.CompanyService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class CompanyController {
 
     @PostMapping
     public CompanyResponseDTO createCompany(
-            @RequestBody CompanyRequestDTO companyRequestDTO
+          @Valid @RequestBody CompanyRequestDTO companyRequestDTO
     ) {
         return companyService.createCompany(companyRequestDTO);
     }
@@ -31,13 +32,14 @@ public class CompanyController {
 
     @GetMapping("/{id}")
     public CompanyResponseDTO getCompanyById(
-            @PathVariable Long id
+            @Valid    @PathVariable Long id
     ) {
         return companyService.findCompanyById(id);
     }
 
     @PutMapping("/{id}")
     public CompanyResponseDTO updateCompany(
+            @Valid
             @PathVariable Long id,
             @RequestBody CompanyRequestDTO companyRequestDTO
     ) {
@@ -46,6 +48,7 @@ public class CompanyController {
 
     @PatchMapping("/{id}/deactivate")
     public CompanyResponseDTO deactivateCompany(
+            @Valid
             @PathVariable Long id
     ) {
         return companyService.deactivateCompany(id);
@@ -53,6 +56,7 @@ public class CompanyController {
 
     @GetMapping("/search")
     public List<CompanyResponseDTO> searchCompanies(
+            @Valid
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String companyName
     ) {

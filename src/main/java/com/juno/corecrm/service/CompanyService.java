@@ -3,6 +3,7 @@ package com.juno.corecrm.service;
 import com.juno.corecrm.domain.entity.Company;
 import com.juno.corecrm.DTO.Company.CompanyRequestDTO;
 import com.juno.corecrm.DTO.Company.CompanyResponseDTO;
+import com.juno.corecrm.exception.ResourceNotFoundException;
 import com.juno.corecrm.repository.CompanyRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -64,11 +65,7 @@ public class CompanyService {
     public CompanyResponseDTO findCompanyById(Long id) {
 
         Company searchedCompany = companyRepository.findById(id)
-                .orElseThrow(() ->
-                        new ResponseStatusException(
-                                HttpStatus.NOT_FOUND,
-                                "Company not found"
-                        )
+                .orElseThrow(() ->  new ResourceNotFoundException("Company not found")
                 );
 
         return convertToDTO(searchedCompany);
@@ -80,11 +77,7 @@ public class CompanyService {
     ) {
 
         Company searchedCompany = companyRepository.findById(id)
-                .orElseThrow(() ->
-                        new ResponseStatusException(
-                                HttpStatus.NOT_FOUND,
-                                "Company not found"
-                        )
+                .orElseThrow(() ->  new ResourceNotFoundException("Company not found")
                 );
 
         searchedCompany.setClientName(request.clientName());
@@ -100,11 +93,7 @@ public class CompanyService {
     public CompanyResponseDTO deactivateCompany(Long id) {
 
         Company searchedCompany = companyRepository.findById(id)
-                .orElseThrow(() ->
-                        new ResponseStatusException(
-                                HttpStatus.NOT_FOUND,
-                                "Company not found"
-                        )
+                .orElseThrow(() ->  new ResourceNotFoundException("Company not found")
                 );
 
         searchedCompany.setActive(false);
