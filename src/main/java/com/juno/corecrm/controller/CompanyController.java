@@ -61,7 +61,7 @@ public class CompanyController {
             @RequestParam(required = false) String companyName
     ) {
         if (name != null) {
-            return companyService.findByCompanyName(name);
+            return companyService.findCompanyByClientName(name);
         }
 
         if (companyName != null) {
