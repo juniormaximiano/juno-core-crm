@@ -27,7 +27,7 @@ public class ContactService {
     }
 
     public ContactResponseDTO createContact(Long id, ContactRequestDTO request) {
-        Company searchedCompany = companyRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found;"));
+        Company searchedCompany = companyRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Company not found"));
 
         Contact contact = new Contact();
         contact.setName(request.name());
@@ -68,7 +68,7 @@ public class ContactService {
 
     public ContactResponseDTO updateContact(Long id, ContactRequestDTO request) {
 
-        Contact contact = contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found;"));
+        Contact contact = contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found"));
 
         contact.setId(id);
 
