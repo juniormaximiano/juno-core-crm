@@ -4,11 +4,10 @@ import com.juno.corecrm.DTO.Contact.ContactRequestDTO;
 import com.juno.corecrm.DTO.Contact.ContactResponseDTO;
 import com.juno.corecrm.domain.entity.Company;
 import com.juno.corecrm.domain.entity.Contact;
+import com.juno.corecrm.exception.ResourceNotFoundException;
 import com.juno.corecrm.repository.CompanyRepository;
 import com.juno.corecrm.repository.ContactRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ public class ContactService {
     }
 
     public ContactResponseDTO createContact(Long id, ContactRequestDTO request) {
-        Company searchedCompany = companyRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Company not found"));
+        Company searchedCompany = companyRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Company not found"));
 
         Contact contact = new Contact();
         contact.setName(request.name());
@@ -55,12 +54,7 @@ public class ContactService {
     }
 
     public ContactResponseDTO findContactById(Long id) {
-        Contact contactSearched = contactRepository.findById(id)
-                .orElseThrow(() ->
-                        new ResponseStatusException(
-                                HttpStatus.NOT_FOUND,
-                                "Contact not found"
-                        )
+        Contact contactSearched = contactRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Contact not found")
                 );
 
         return convertToDTO(contactSearched);
@@ -68,7 +62,7 @@ public class ContactService {
 
     public ContactResponseDTO updateContact(Long id, ContactRequestDTO request) {
 
-        Contact contact = contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found"));
+        Contact contact = contactRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Contact not found"));
 
         contact.setId(id);
 
@@ -90,7 +84,7 @@ public class ContactService {
 
     public ContactResponseDTO deactiveContact(Long id) {
 
-        Contact contactSearched = contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found"));
+        Contact contactSearched = contactRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Contact not found"));
 
         contactSearched.setActive(false);
 
@@ -119,7 +113,7 @@ public class ContactService {
 
     public ContactResponseDTO findById(Long id) {
 
-        Contact contactSearched = contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact not found"));
+        Contact contactSearched = contactRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Contact not found"));
 
         return convertToDTO(contactSearched);
 
