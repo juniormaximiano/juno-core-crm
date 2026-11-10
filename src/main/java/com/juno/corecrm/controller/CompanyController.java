@@ -20,7 +20,7 @@ public class CompanyController {
 
     @PostMapping
     public CompanyResponseDTO createCompany(
-          @Valid @RequestBody CompanyRequestDTO companyRequestDTO
+            @Valid @RequestBody CompanyRequestDTO companyRequestDTO
     ) {
         return companyService.createCompany(companyRequestDTO);
     }
@@ -32,23 +32,21 @@ public class CompanyController {
 
     @GetMapping("/{id}")
     public CompanyResponseDTO getCompanyById(
-            @Valid    @PathVariable Long id
+             @PathVariable Long id
     ) {
         return companyService.findCompanyById(id);
     }
 
     @PutMapping("/{id}")
     public CompanyResponseDTO updateCompany(
-            @Valid
             @PathVariable Long id,
-            @RequestBody CompanyRequestDTO companyRequestDTO
+            @Valid @RequestBody CompanyRequestDTO companyRequestDTO
     ) {
         return companyService.updateCompany(id, companyRequestDTO);
     }
 
     @PatchMapping("/{id}/deactivate")
     public CompanyResponseDTO deactivateCompany(
-            @Valid
             @PathVariable Long id
     ) {
         return companyService.deactivateCompany(id);
@@ -56,7 +54,6 @@ public class CompanyController {
 
     @GetMapping("/search")
     public List<CompanyResponseDTO> searchCompanies(
-            @Valid
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String companyName
     ) {

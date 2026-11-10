@@ -20,9 +20,8 @@ public class ContactController {
 
     @PostMapping("/company/{companyId}")
     public ContactResponseDTO createContact(
-            @Valid
             @PathVariable Long companyId,
-            @RequestBody ContactRequestDTO request
+            @Valid @RequestBody ContactRequestDTO request
     ) {
         return contactService.createContact(companyId, request);
     }
@@ -34,7 +33,6 @@ public class ContactController {
 
     @GetMapping("/{contactId}")
     public ContactResponseDTO findContactById(
-            @Valid
             @PathVariable Long contactId
     ) {
         return contactService.findById(contactId);
@@ -42,7 +40,6 @@ public class ContactController {
 
     @GetMapping("/company/{companyId}")
     public ContactResponseDTO findContactsBycompany(
-            @Valid
             @PathVariable Long companyId
     ) {
         return contactService.findContactById(companyId);
@@ -50,16 +47,14 @@ public class ContactController {
 
     @PutMapping("/{contactId}")
     public ContactResponseDTO updateContact(
-            @Valid
             @PathVariable Long contactId,
-            @RequestBody ContactRequestDTO request
+            @Valid @RequestBody ContactRequestDTO request
     ) {
         return contactService.updateContact(contactId, request);
     }
 
     @PatchMapping("/{contactId}/deactivate")
     public ContactResponseDTO deactivateContact(
-            @Valid
             @PathVariable Long contactId
     ) {
         return contactService.deactiveContact(contactId);
