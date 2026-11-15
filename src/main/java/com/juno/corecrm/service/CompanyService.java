@@ -1,8 +1,8 @@
 package com.juno.corecrm.service;
 
 import com.juno.corecrm.domain.entity.Company;
-import com.juno.corecrm.dto.Company.CompanyRequestDTO;
-import com.juno.corecrm.dto.Company.CompanyResponseDTO;
+import com.juno.corecrm.dto.company.CompanyRequestDTO;
+import com.juno.corecrm.dto.company.CompanyResponseDTO;
 import com.juno.corecrm.exception.ResourceNotFoundException;
 import com.juno.corecrm.repository.CompanyRepository;
 import org.springframework.stereotype.Service;

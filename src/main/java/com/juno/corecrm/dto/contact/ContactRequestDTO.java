@@ -1,15 +1,14 @@
-package com.juno.corecrm.dto.Company;
+package com.juno.corecrm.dto.contact;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record CompanyRequestDTO(
-
-
-        @NotBlank
-        String clientName,
+public record ContactRequestDTO(
 
         @NotBlank
-        String companyName,
+        String name,
+
+        @NotBlank
+        String role,
 
         @NotBlank
         String email,

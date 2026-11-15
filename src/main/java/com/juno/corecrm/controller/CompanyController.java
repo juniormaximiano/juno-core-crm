@@ -1,7 +1,7 @@
 package com.juno.corecrm.controller;
 
-import com.juno.corecrm.dto.Company.CompanyRequestDTO;
-import com.juno.corecrm.dto.Company.CompanyResponseDTO;
+import com.juno.corecrm.dto.company.CompanyRequestDTO;
+import com.juno.corecrm.dto.company.CompanyResponseDTO;
 import com.juno.corecrm.service.CompanyService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;

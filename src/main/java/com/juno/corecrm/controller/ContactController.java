@@ -1,7 +1,7 @@
 package com.juno.corecrm.controller;
 
-import com.juno.corecrm.dto.Contact.ContactRequestDTO;
-import com.juno.corecrm.dto.Contact.ContactResponseDTO;
+import com.juno.corecrm.dto.contact.ContactRequestDTO;
+import com.juno.corecrm.dto.contact.ContactResponseDTO;
 import com.juno.corecrm.service.ContactService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
