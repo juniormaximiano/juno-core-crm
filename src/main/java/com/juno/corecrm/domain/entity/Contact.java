@@ -68,11 +68,11 @@ public class Contact {
         this.active = active;
     }
 
-    public Company getClient() {
+    public Company getCompany() {
         return company;
     }
 
-    public void setClient(Company company) {
+    public void setCompany(Company company) {
         this.company = company;
     }
 }

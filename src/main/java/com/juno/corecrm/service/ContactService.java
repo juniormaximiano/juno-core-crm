@@ -34,7 +34,7 @@ public class ContactService {
         contact.setPhone(request.phone());
         contact.setRole(request.role());
         contact.setActive(true);
-        contact.setClient(searchedCompany);
+        contact.setCompany(searchedCompany);
         Contact savedContact = contactRepository.save(contact);
 
         return convertToDTO(savedContact);
@@ -49,7 +49,7 @@ public class ContactService {
                 contact.getEmail(),
                 contact.getPhone(),
                 contact.isActive(),
-                contact.getClient().getIdCompany()
+                contact.getCompany().getIdCompany()
         );
     }
 
