@@ -1,4 +1,4 @@
-package com.juno.corecrm.DTO.Company;
+package com.juno.corecrm.dto.Company;
 
 import jakarta.validation.constraints.NotBlank;
 

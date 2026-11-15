@@ -1,4 +1,4 @@
-package com.juno.corecrm.DTO.Contact;
+package com.juno.corecrm.dto.Contact;
 
 public record ContactResponseDTO(
         Long idContact,

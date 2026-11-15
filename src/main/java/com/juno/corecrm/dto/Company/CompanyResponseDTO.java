@@ -1,10 +1,10 @@
-package com.juno.corecrm.DTO.Company;
+package com.juno.corecrm.dto.Company;
 
 import java.time.LocalDate;
 
 public record CompanyResponseDTO(
 
-        long idClient,
+        long idCompany,
 
         String clientName,
 
@@ -14,7 +14,7 @@ public record CompanyResponseDTO(
 
         String phone,
 
-        boolean activeClient,
+        boolean activeCompany,
 
         LocalDate createdAt
 ) {

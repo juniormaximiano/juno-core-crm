@@ -1,7 +1,7 @@
 package com.juno.corecrm.service;
 
-import com.juno.corecrm.DTO.Contact.ContactRequestDTO;
-import com.juno.corecrm.DTO.Contact.ContactResponseDTO;
+import com.juno.corecrm.dto.Contact.ContactRequestDTO;
+import com.juno.corecrm.dto.Contact.ContactResponseDTO;
 import com.juno.corecrm.domain.entity.Company;
 import com.juno.corecrm.domain.entity.Contact;
 import com.juno.corecrm.exception.ResourceNotFoundException;

@@ -1,13 +1,11 @@
 package com.juno.corecrm.service;
 
 import com.juno.corecrm.domain.entity.Company;
-import com.juno.corecrm.DTO.Company.CompanyRequestDTO;
-import com.juno.corecrm.DTO.Company.CompanyResponseDTO;
+import com.juno.corecrm.dto.Company.CompanyRequestDTO;
+import com.juno.corecrm.dto.Company.CompanyResponseDTO;
 import com.juno.corecrm.exception.ResourceNotFoundException;
 import com.juno.corecrm.repository.CompanyRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
