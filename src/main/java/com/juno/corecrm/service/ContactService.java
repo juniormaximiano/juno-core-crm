@@ -74,8 +74,6 @@ public class ContactService {
 
         contact.setRole(request.role());
 
-        contact.setActive(true);
-
         Contact updatedContact = contactRepository.save(contact);
 
         return convertToDTO(updatedContact);
