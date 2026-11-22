@@ -9,7 +9,6 @@ import com.juno.corecrm.repository.CompanyRepository;
 import com.juno.corecrm.repository.ContactRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -98,15 +97,7 @@ public class ContactService {
 
         var allContacts = contactRepository.findAll();
 
-        List<ContactResponseDTO> contactResponseDTOS = new ArrayList<>();
-
-        for (var contacts : allContacts) {
-
-            contactResponseDTOS.add(convertToDTO(contacts));
-
-        }
-
-        return contactResponseDTOS;
+        return allContacts.stream().map(this::convertToDTO).toList();
     }
 
     public ContactResponseDTO findById(Long id) {

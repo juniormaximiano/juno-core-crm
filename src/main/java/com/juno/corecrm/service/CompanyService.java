@@ -8,7 +8,6 @@ import com.juno.corecrm.repository.CompanyRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -51,13 +50,8 @@ public class CompanyService {
     public List<CompanyResponseDTO> getAllCompanies() {
 
         List<Company> allCompanies = companyRepository.findAll();
-        List<CompanyResponseDTO> companyResponseDTOS = new ArrayList<>();
 
-        for (Company company : allCompanies) {
-            companyResponseDTOS.add(convertToDTO(company));
-        }
-
-        return companyResponseDTOS;
+        return allCompanies.stream().map(this::convertToDTO).toList();
     }
 
     public CompanyResponseDTO findCompanyById(Long id) {
@@ -106,13 +100,7 @@ public class CompanyService {
         List<Company> searchedCompanies =
                 companyRepository.findByClientNameContainingIgnoreCase(name);
 
-        List<CompanyResponseDTO> companyResponseDTOS = new ArrayList<>();
-
-        for (Company company : searchedCompanies) {
-            companyResponseDTOS.add(convertToDTO(company));
-        }
-
-        return companyResponseDTOS;
+        return searchedCompanies.stream().map(this::convertToDTO).toList();
     }
 
     public List<CompanyResponseDTO> findByCompanyName(String companyName) {
@@ -120,13 +108,7 @@ public class CompanyService {
         List<Company> searchedCompanies =
                 companyRepository.findByCompanyNameContainingIgnoreCase(companyName);
 
-        List<CompanyResponseDTO> companyResponseDTOS = new ArrayList<>();
-
-        for (Company company : searchedCompanies) {
-            companyResponseDTOS.add(convertToDTO(company));
-        }
-
-        return companyResponseDTOS;
+        return searchedCompanies.stream().map(this::convertToDTO).toList();
     }
 
     public List<CompanyResponseDTO> findActiveCompanies() {
@@ -134,12 +116,6 @@ public class CompanyService {
         List<Company> activeCompanies =
                 companyRepository.findAllByActiveTrue();
 
-        List<CompanyResponseDTO> companyResponseDTOS = new ArrayList<>();
-
-        for (Company company : activeCompanies) {
-            companyResponseDTOS.add(convertToDTO(company));
-        }
-
-        return companyResponseDTOS;
+        return activeCompanies.stream().map(this::convertToDTO).toList();
     }
 }
