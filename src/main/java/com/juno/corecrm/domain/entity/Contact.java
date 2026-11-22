@@ -75,4 +75,22 @@ public class Contact {
     public void setCompany(Company company) {
         this.company = company;
     }
+
+    @Override
+    public int hashCode(){
+        return Contact.class.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) return true;
+        if (!(obj instanceof Contact other)) return false;
+
+        Long id = getId();
+        return id != null && id.equals(getId());
+
+
+    }
+
+
 }

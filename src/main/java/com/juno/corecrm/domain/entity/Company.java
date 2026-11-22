@@ -93,4 +93,18 @@ public class Company {
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
+
+    @Override
+    public int hashCode(){
+        return Company.class.hashCode();
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Company other)) return false;
+
+        Long id = getIdCompany();
+        return id != null && id.equals(getIdCompany());
+    }
+
 }
