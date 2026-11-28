@@ -57,6 +57,6 @@ public class ContactController {
     public ContactResponseDTO deactivateContact(
             @PathVariable Long contactId
     ) {
-        return contactService.deactiveContact(contactId);
+        return contactService.deactivateContact(contactId);
     }
 }

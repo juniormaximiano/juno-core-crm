@@ -15,9 +15,9 @@ import java.util.List;
 
 public class ContactService {
 
-    CompanyRepository companyRepository;
+  private final  CompanyRepository companyRepository;
 
-    ContactRepository contactRepository;
+  private final  ContactRepository contactRepository;
 
     public ContactService(CompanyRepository companyRepository, ContactRepository contactRepository) {
         this.companyRepository = companyRepository;
@@ -79,7 +79,7 @@ public class ContactService {
 
     }
 
-    public ContactResponseDTO deactiveContact(Long id) {
+    public ContactResponseDTO deactivateContact(Long id) {
 
         Contact contactSearched = contactRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Contact not found"));
 
